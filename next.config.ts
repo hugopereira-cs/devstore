@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "github.com",
+        pathname: "/hugopereira-cs.png",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
