@@ -4,8 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getFeaturedProducts(): Promise<Product[]> {
-  const response = await api("/products/featured");
-
+  // Cachea esta requisição por uma hora, ou seja, todas as requisições para esta rota mostrarão a mesma página, salva em cache após o primeiro acesso
+  const response = await api("/products/featured", {
+    next: {
+      revalidate: 60 * 60, // 1 hora
+    }
+  });
+  
   const products = await response.json();
 
   return products;
