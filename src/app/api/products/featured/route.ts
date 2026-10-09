@@ -1,7 +1,7 @@
 import data from "../data.json";
 
 // Rota para produtos em destaque
-export function GET() {
+export async function GET() {
   const featuredProducts = data.products.filter(
     (products) => products.featured
   );

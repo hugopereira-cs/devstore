@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getFeaturedProducts(): Promise<Product[]> {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   // Cachea esta requisição por uma hora, ou seja, todas as requisições para esta rota mostrarão a mesma página, salva em cache após o primeiro acesso
   const response = await api("/products/featured", {
     next: {
