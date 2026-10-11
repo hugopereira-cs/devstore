@@ -2,6 +2,7 @@ import { z } from "zod";
 
 const envSchema = z.object({
   NEXT_PUBLIC_API_BASE_URL: z.url(),
+  APP_URL: z.url(),
 });
 
 // Pega o valor enviado como parâmetro (process.env) e valida que o ele segue o formato estabelecido por envSchema
