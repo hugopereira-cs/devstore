@@ -1,12 +1,10 @@
 describe("search products", () => {
   it("should be able to search for a products", () => {
-    cy.visit("/");
-
-    cy.get("input[name=q]").type("camiseta").parent().submit();
+    cy.searchByQuery('moletom')
 
     cy.location("pathname").should("include", "/search");
 
-    cy.location("search").should("include", "q=camiseta").should("exist");
+    cy.location("search").should("include", "q=moletom").should("exist");
   });
 
   it("should return to the home page when submitting an empty search", () => {
