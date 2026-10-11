@@ -19,7 +19,7 @@ declare namespace Cypress {
 Cypress.Commands.add("searchByQuery", (query: string) => {
   cy.visit("/");
 
-  cy.get('input[name="q"]:visible').type(query).closest("form").submit();
+  cy.get('[data-cy="search-input"]').type(`${query}{enter}`);
 });
 //
 //

@@ -41,6 +41,7 @@ function SearchFormContent() {
     >
       <Search className="w-5 h-5 text-zinc-500" />
       <input
+        data-cy="search-input"
         name="q"
         defaultValue={query ?? ""}
         placeholder="Buscar produtos..."

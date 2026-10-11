@@ -10,7 +10,7 @@ describe("search products", () => {
   it("should return to the home page when submitting an empty search", () => {
     cy.visit("/search?q=camiseta");
 
-    cy.get('input[name="q"]:visible').clear().type("{enter}");
+    cy.get('[data-cy="search-input"]').clear().type("{enter}");
 
     cy.location("pathname").should("equal", "/");
   });
