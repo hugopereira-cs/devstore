@@ -1,7 +1,12 @@
 import { api } from "@/data/api";
 import type { Product } from "@/data/types/product";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 async function getFeaturedProducts(): Promise<Product[]> {
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -9,9 +14,9 @@ async function getFeaturedProducts(): Promise<Product[]> {
   const response = await api("/products/featured", {
     next: {
       revalidate: 60 * 60, // 1 hora
-    }
+    },
   });
-  
+
   const products = await response.json();
 
   return products;
@@ -50,7 +55,7 @@ export default async function Home() {
       </Link>
       {otherProducts.map((product) => (
         <Link
-        key={product.id}
+          key={product.id}
           href={`/product/${product.slug}`}
           className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-center"
         >

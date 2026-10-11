@@ -12,18 +12,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Mostra o título da página e | devstore, se não houver título configurado na página mostra devstore
 export const metadata: Metadata = {
-  title: "DevStore",
+  title: {
+    template: "%s | devstore",
+    default: "devstore",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-    
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="bg-zinc-950 text-zinc-50 antialiased min-h-full flex flex-col">{children}</body>
+      <body className="bg-zinc-950 text-zinc-50 antialiased min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }
