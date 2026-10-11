@@ -11,16 +11,16 @@
 //
 //
 declare namespace Cypress {
-    interface Chainable {
-      searchByQuery(query: string): Chainable<void>
-    }
+  interface Chainable {
+    searchByQuery(query: string): Chainable<void>;
   }
+}
 // -- This is a parent command --
-Cypress.Commands.add('searchByQuery', (query: string) => {
+Cypress.Commands.add("searchByQuery", (query: string) => {
   cy.visit("/");
 
-    cy.get("input[name=q]").type(query).parent('form').submit();
-})
+  cy.get('input[name="q"]:visible').type(query).closest("form").submit();
+});
 //
 //
 // -- This is a child command --
