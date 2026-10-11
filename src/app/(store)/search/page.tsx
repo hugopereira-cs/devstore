@@ -15,7 +15,7 @@ async function getProducts(query: string): Promise<Product[]> {
 
   if (!response.ok) {
     throw new Error(
-      `A busca falhou: ${response.status} ${response.statusText}`,
+      `A busca falhou: ${response.status} ${response.statusText}`
     );
   }
 
