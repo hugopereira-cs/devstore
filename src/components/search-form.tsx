@@ -26,6 +26,7 @@ function SearchFormContent() {
     const query = formData.get("q");
 
     if (typeof query !== "string" || !query.trim()) {
+      router.push("/");
       return;
     }
 

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { api } from "@/data/api";
 import type { Product } from "@/data/types/product";
 
@@ -15,7 +16,7 @@ async function getProducts(query: string): Promise<Product[]> {
 
   if (!response.ok) {
     throw new Error(
-      `A busca falhou: ${response.status} ${response.statusText}`
+      `A busca falhou: ${response.status} ${response.statusText}`,
     );
   }
 
@@ -25,7 +26,12 @@ async function getProducts(query: string): Promise<Product[]> {
 export default async function Search({ searchParams }: SearchPageProps) {
   const params = await searchParams;
   const query = typeof params.q === "string" ? params.q.trim() : "";
-  const products = query ? await getProducts(query) : [];
+
+  if (!query) {
+    redirect("/");
+  }
+
+  const products = await getProducts(query);
 
   return (
     <div className="flex flex-col gap-4">
